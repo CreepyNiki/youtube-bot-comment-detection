@@ -41,7 +41,19 @@ df['average_word_length'] = df['Comment_without_punctuation'].apply(lambda x: su
 
 df['emoji_count'] = df['Comment'].apply(emoji.emoji_count)
 
-df.drop(['Published_At', 'Video_Published_At', 'Comment_without_emojis', 'Comment_without_punctuation'], axis=1, inplace=True)
+df.drop(['Published_At', 'Video_Published_At', 'Comment_without_emojis', 'Comment_without_punctuation', 'Video_ID'], axis=1, inplace=True)
 
 with open('Feature_based_machine_Learning/feature_table.csv', 'w', newline='', encoding='utf-8') as file:
     df.to_csv(file, index=False)
+
+dank_occurrence_by_label = df.groupby('Label')['Dank_occurring'].mean()
+exclamation_mark_occurrence_by_label = df.groupby('Label')['!_occurring'].mean()
+word_count_by_label = df.groupby('Label')['word_count'].mean()
+average_word_length_by_label = df.groupby('Label')['average_word_length'].mean()
+time_difference_by_label = df.groupby('Label')['Time_Difference'].mean()
+
+print(dank_occurrence_by_label)
+print(exclamation_mark_occurrence_by_label)
+print(word_count_by_label)
+print(average_word_length_by_label)
+print(time_difference_by_label)
