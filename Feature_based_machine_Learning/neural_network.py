@@ -13,16 +13,24 @@ from tensorflow.keras.regularizers import L1L2, L2
 from tensorflow.keras.optimizers import Adam
 import matplotlib.pyplot as plt
 
+def random_baseline(data):
+    return np.random.randint(0, 2, len(data))
+
 def to_number(labels):
     number_labels = []
     for label in labels:
-        if label == 'nonbot':
+        if label == 'bot':
             number_labels.append(0)
-        elif label == 'bot':
+        elif label == 'nonbot':
             number_labels.append(1)
     return number_labels
 
 data = pd.read_csv("Feature_based_machine_Learning/feature_table.csv", encoding="utf-8")
+
+# data = pd.concat([data.head(200), data.tail(200)])
+# data = pd.concat([data.head(150), data.tail(150)])
+# data = pd.concat([data.head(100), data.tail(100)])
+data = pd.concat([data.head(25), data.tail(25)])
 
 X = data.drop('Label', axis=1)
 y = data['Label']
@@ -103,3 +111,6 @@ plt.legend()
 plt.title('Training and Validation Loss')
 
 plt.show()
+
+# random_baseline_predictions = random_baseline(y_test)
+# print(classification_report(y_test_labels, random_baseline_predictions))
