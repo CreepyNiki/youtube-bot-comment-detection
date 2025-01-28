@@ -5,6 +5,15 @@ import csv
 from collections import defaultdict
 import os
 
+# Methode, wo die CSV Dateien reingegeben werden 
+def fix_csv(input_file, output_file):
+    with open(input_file, 'r', encoding='utf-8') as infile, open(output_file, 'w', newline='', encoding='utf-8') as outfile:
+        reader = csv.reader(infile)
+        writer = csv.writer(outfile, quoting=csv.QUOTE_ALL)
+
+        for row in reader:
+            writer.writerow(row)
+
 def to_big_csv():
     df1 = pd.read_csv("Extract_Comments/fixed_bot.csv", encoding="utf-8")
     # print(df1['Comment'])
@@ -20,13 +29,7 @@ def to_big_csv():
 
 
     
-def fix_csv(input_file, output_file):
-    with open(input_file, 'r', encoding='utf-8') as infile, open(output_file, 'w', newline='', encoding='utf-8') as outfile:
-        reader = csv.reader(infile)
-        writer = csv.writer(outfile, quoting=csv.QUOTE_ALL)
 
-        for row in reader:
-            writer.writerow(row)
 
 def add_double_quotes(input_file, output_file):
     with open(input_file, 'r', encoding='utf-8') as infile, open(output_file, 'w', newline='', encoding='utf-8') as outfile:
