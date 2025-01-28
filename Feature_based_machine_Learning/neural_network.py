@@ -28,6 +28,10 @@ def to_number(labels):
             number_labels.append(1)
     return number_labels
 
+# Vortrainierte Embeddings laden
+embeddings_df = pd.read_csv("Embeddings/embeddings.csv")
+embedding_matrix = embeddings_df.iloc[:, :-1].values  # Alle Spalten außer 'ID'
+
 # Laden der Daten mit verschiedenen Datengrößen
 data = pd.read_csv("Feature_based_machine_Learning/feature_table.csv", encoding="utf-8")
 # data = pd.concat([data.head(200), data.tail(200)])
@@ -35,8 +39,8 @@ data = pd.read_csv("Feature_based_machine_Learning/feature_table.csv", encoding=
 # data = pd.concat([data.head(100), data.tail(100)])
 # data = pd.concat([data.head(25), data.tail(25)])
 
-embeddings = pd.read_csv("Embeddings/embeddings.csv", encoding="utf-8")
-vocab_size, embedding_dim = embeddings.shape
+
+
 
 # die Spalte 'Label' wird aus den Features entfernt und in y (also dem Target Label) gespeichert
 # axis=1 bezieht sich auf Spalten und nicht auf Zeilen
@@ -65,6 +69,7 @@ y_test = to_categorical(y_test, num_classes=number_classes)
 tokenizer = Tokenizer()
 tokenizer.fit_on_texts(X_train_text)
 vocab_size = len(tokenizer.word_index) + 1
+
 # Die Daten werden in Sequenzen umgewandelt und gepaddet
 tokenized_X_train = tokenizer.texts_to_sequences(X_train_text)
 tokenized_X_test = tokenizer.texts_to_sequences(X_test_text)
@@ -76,6 +81,7 @@ tokenized_X_test = pad_sequences(tokenized_X_test, maxlen=MAX_LENGTH, padding='p
 tokenized_X_train = np.array(tokenized_X_train)
 tokenized_X_test = np.array(tokenized_X_test)
 
+
 # Erneuter Testsplit um auch das Validation Set zu haben
 X_train_split, X_val_split, y_train_split, y_val_split = train_test_split(tokenized_X_train, y_train, test_size=0.25, random_state=42)
 
@@ -84,7 +90,7 @@ regularizer = L1L2(l1=1e-5, l2=1e-5)
 # Erstellung des FFNNs und der 2 Hidden Layers
 model = Sequential()
 model.add(Input(shape=(MAX_LENGTH,)))
-model.add(Embedding(vocab_size, 100, input_length=MAX_LENGTH, trainable=True, weights=[embeddings]))
+model.add(Embedding(vocab_size, 100, input_length=MAX_LENGTH, trainable=False))
 model.add(Flatten())
 model.add(Dense(66, activation='tanh', kernel_regularizer=regularizer, bias_regularizer=L2(1e-5), activity_regularizer=L2(1e-4)))
 model.add(Dropout(0.3))
