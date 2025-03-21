@@ -20,10 +20,12 @@ class YouTubeDataset(torch.utils.data.Dataset):
         return item
     
 # Laden von Daten
-data = pd.read_csv("Sprachmodell/comments_with_label.csv")
+data = pd.read_csv("Extract_Comments/comments_with_label.csv")
 
 # Train Test Split
 train_texts, val_texts, train_labels, val_labels = train_test_split(data['Comment'], data['Label'], test_size=0.2)
+
+print(train_texts)
 
 # Konvertieren von Labes in Integer
 label_to_int = {'nonbot': 0, 'bot': 1}
