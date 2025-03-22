@@ -21,7 +21,6 @@ from sklearn.metrics import classification_report
 import scikitplot as skplt
 import kds
 
-
 # Methode, die die random Baseline berechnet, indem sie den einzelnen Daten entweder 0 oder 1 zuweist
 def random_baseline(data):
     random_preds = np.random.randint(0, 2, len(data))
@@ -140,7 +139,7 @@ print(classification_report(y_test_labels, y_pred))
 
 
 # Anwendung der Baseline Methode
-random_baseline(y_test)
+# random_baseline(y_test)
 
 # confusion_matrix()
 

@@ -59,7 +59,7 @@ def classify_comment(comment):
         f"Bitte klassifiziere den folgenden Kommentar als Bot (0) oder Nonbot (1). Antworte bitte nur der Zahl 0 oder 1.\n"
         f"Beispiel 1: NONBOTKOMMENTAR Antwort: 1\n"
         f"Beispiel 2: BOTKOMMENTAR Antwort: 0\n"
-        f"Wenn du den Kommentar richtig klassifizierst bekommst du 1000 Euro Trinkgeld.\n"
+        # f"Wenn du den Kommentar richtig klassifizierst bekommst du 1000 Euro Trinkgeld.\n"
         f"Kommentar: {comment}  Antwort:"
     )
     
