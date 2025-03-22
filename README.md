@@ -18,7 +18,8 @@ Um das Script für den CommentExtractor zu testen, ist Zugriff auf mein YouTube 
 
 ### Large Language Model
 1. Herunterladen und Entpacken des Scripts von Google Drive.
-2. Einfügen des Ordners `EleutherAI_gpt-neo-125M` in die Dateistruktur.
-3. Starten des Python Scripts `use_model_on_data.py`.
+  ![image](https://github.com/user-attachments/assets/fc7a55a3-2995-46dc-9623-d8c33ae36cc2)
+3. Einfügen des Ordners `EleutherAI_gpt-neo-125M` in die Dateistruktur.
+4. Starten des Python Scripts `use_model_on_data.py`.
 
 <mark>Google Drive Link</mark>: [Sprachmodell](https://drive.google.com/drive/folders/1DhLnXPGenlY8Z28JD5GL4cf6kkfzPNDr?usp=drive_link)
