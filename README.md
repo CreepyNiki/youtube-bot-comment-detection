@@ -4,6 +4,9 @@ Ein universitäres Projekt,
 
 ## Setup
 
+### Youtube-Comment-Extractor-Script
+Um das Script für den CommentExtractor zu testen, ist Zugriff auf mein YouTube API Projekt vonnöten. Dafür gerne eine Mail an ´nlh352@gmail.com´ schreiben.
+
 ### Feature-Based-Machine Learning
 
 ### Large Language Model
